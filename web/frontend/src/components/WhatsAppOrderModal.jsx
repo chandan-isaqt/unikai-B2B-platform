@@ -129,13 +129,23 @@ const WhatsAppOrderModal = ({ isOpen, onClose, items = [], defaultCustomer = {} 
       <div className="bg-white rounded-2xl max-w-xl w-full shadow-2xl border border-slate-200 overflow-hidden my-8">
         {/* Header */}
         <div className="bg-emerald-600 text-white px-5 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <MessageCircle className="w-6 h-6" />
-            <div>
-              <h3 className="font-bold text-base sm:text-lg">
+          <div className="flex items-center gap-3 min-w-0">
+            <div className="w-10 h-10 rounded-xl overflow-hidden bg-emerald-700 text-white font-extrabold text-sm flex items-center justify-center shrink-0 border border-emerald-300/40 relative shadow-2xs">
+              <span className="select-none">{salesman.name?.[0] || 'S'}</span>
+              <img
+                src={salesman.photoUrl || '/image/Sachin.jpeg'}
+                alt={salesman.name || 'Salesman Sachin'}
+                className="absolute inset-0 w-full h-full object-cover object-top"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                }}
+              />
+            </div>
+            <div className="min-w-0">
+              <h3 className="font-bold text-base sm:text-lg truncate">
                 Order via WhatsApp ({salesman.name})
               </h3>
-              <p className="text-xs text-emerald-100">
+              <p className="text-xs text-emerald-100 truncate">
                 Direct WhatsApp Number: {preview?.whatsappNumber || salesman.whatsappNumber}
               </p>
             </div>

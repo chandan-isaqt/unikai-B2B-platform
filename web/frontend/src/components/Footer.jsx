@@ -111,9 +111,22 @@ const Footer = () => {
 
           {/* Column 4: Dedicated Sales Desk */}
           <div>
-            <h4 className="text-sm font-bold uppercase tracking-wider text-white mb-4">
-              B2B Sales Desk ({salesman.name})
-            </h4>
+            <div className="flex items-center gap-2.5 mb-4">
+              <div className="w-8 h-8 rounded-lg overflow-hidden bg-amber-400 text-slate-950 font-bold text-xs flex items-center justify-center shrink-0 border border-amber-300/30 relative">
+                <span className="select-none">{salesman.name?.[0] || 'S'}</span>
+                <img
+                  src={salesman.photoUrl || '/image/Sachin.jpeg'}
+                  alt={salesman.name}
+                  className="absolute inset-0 w-full h-full object-cover object-top"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
+              </div>
+              <h4 className="text-sm font-bold uppercase tracking-wider text-white">
+                B2B Sales Desk ({salesman.name})
+              </h4>
+            </div>
             <div className="space-y-3 text-xs sm:text-sm">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
@@ -263,7 +276,17 @@ const Footer = () => {
             className="w-full flex items-center justify-between py-2 text-left text-sm font-bold text-white focus:outline-none"
           >
             <span className="flex items-center gap-2">
-              <Phone className="w-4 h-4 text-emerald-400" />
+              <div className="w-5 h-5 rounded-md overflow-hidden bg-amber-400 text-slate-950 font-bold text-[10px] flex items-center justify-center shrink-0 relative">
+                <span className="select-none">{salesman.name?.[0] || 'S'}</span>
+                <img
+                  src={salesman.photoUrl || '/image/Sachin.jpeg'}
+                  alt={salesman.name}
+                  className="absolute inset-0 w-full h-full object-cover object-top"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
+              </div>
               <span>B2B Sales Desk ({salesman.name})</span>
             </span>
             <ChevronDown

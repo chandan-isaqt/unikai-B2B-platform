@@ -216,13 +216,28 @@ const MobileMenu = ({
         </div>
 
         {/* Salesman Quick Info & Contact Hub */}
-        <div className="p-3 m-3 rounded-2xl bg-slate-50 border border-slate-200 shrink-0 space-y-2">
-          <div className="flex items-center justify-between text-xs">
-            <span className="text-slate-500 font-medium">B2B Sales Representative:</span>
-            <span className="font-extrabold text-slate-800 truncate ml-1">{salesman.name}</span>
+        <div className="p-3 m-3 rounded-2xl bg-slate-50 border border-slate-200 shrink-0 space-y-2.5">
+          <div className="flex items-center gap-2.5">
+            <div className="w-11 h-11 rounded-xl overflow-hidden bg-amber-400 text-slate-950 font-extrabold text-base flex items-center justify-center shrink-0 border border-slate-200 shadow-2xs relative">
+              <span className="select-none">{salesman.name?.[0] || 'S'}</span>
+              <img
+                src={salesman.photoUrl || '/image/Sachin.jpeg'}
+                alt={salesman.name || 'Salesman Sachin'}
+                className="absolute inset-0 w-full h-full object-cover object-top"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                }}
+              />
+            </div>
+            <div className="min-w-0 flex-1">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-unikai-sky block">
+                B2B Sales Representative
+              </span>
+              <p className="font-extrabold text-slate-900 text-xs truncate">{salesman.name}</p>
+              <p className="text-[11px] text-slate-600 font-semibold truncate">{salesman.phone}</p>
+            </div>
           </div>
-          <p className="text-xs text-slate-600 font-semibold">{salesman.phone}</p>
-          <div className="grid grid-cols-2 gap-2 pt-1">
+          <div className="grid grid-cols-2 gap-2 pt-1 border-t border-slate-200/60">
             {cleanPhone && (
               <a
                 href={`https://wa.me/${cleanPhone}?text=${encodeURIComponent(

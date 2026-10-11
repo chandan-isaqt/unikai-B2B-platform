@@ -98,9 +98,22 @@ const Navbar = () => {
             </span>
           </div>
           <div className="hidden md:flex items-center gap-4 shrink-0">
-            <span className="text-slate-300">
-              Salesman: <strong className="text-white">{salesman.name}</strong> ({salesman.phone})
-            </span>
+            <div className="flex items-center gap-2 text-slate-300">
+              <div className="w-5 h-5 rounded-full overflow-hidden bg-amber-400 text-slate-950 font-bold text-[10px] flex items-center justify-center shrink-0 border border-amber-300/40 relative">
+                <span className="select-none">{salesman.name?.[0] || 'S'}</span>
+                <img
+                  src={salesman.photoUrl || '/image/Sachin.jpeg'}
+                  alt={salesman.name || 'Sachin'}
+                  className="absolute inset-0 w-full h-full object-cover object-top"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
+              </div>
+              <span>
+                Salesman: <strong className="text-white">{salesman.name}</strong> ({salesman.phone})
+              </span>
+            </div>
             {isExecutive && (
               <Link
                 to="/executive"

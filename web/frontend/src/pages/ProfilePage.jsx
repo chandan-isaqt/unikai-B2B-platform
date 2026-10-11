@@ -616,12 +616,25 @@ const ProfilePage = () => {
           {/* 5. CONTACT SALESMAN */}
           {activeTab === 'salesman' && (
             <div className="bg-white rounded-2xl border border-slate-200 p-5 sm:p-8 space-y-5">
-              <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-unikai-sky">
-                  Your Assigned Account Executive
-                </span>
-                <h2 className="text-xl font-extrabold text-slate-900 mt-1">{salesman.name}</h2>
-                <p className="text-xs sm:text-sm text-slate-500">{salesman.title}</p>
+              <div className="flex items-center justify-between gap-4 border-b border-slate-100 pb-5">
+                <div className="min-w-0">
+                  <span className="text-xs font-bold uppercase tracking-wider text-unikai-sky">
+                    Your Assigned Account Executive
+                  </span>
+                  <h2 className="text-xl font-extrabold text-slate-900 mt-1 truncate">{salesman.name}</h2>
+                  <p className="text-xs sm:text-sm text-slate-500">{salesman.title}</p>
+                </div>
+                <div className="w-16 h-16 rounded-2xl overflow-hidden bg-amber-400 text-slate-950 font-extrabold text-2xl flex items-center justify-center shrink-0 border-2 border-slate-200 shadow-sm relative">
+                  <span className="select-none">{salesman.name?.[0] || 'S'}</span>
+                  <img
+                    src={salesman.photoUrl || '/image/Sachin.jpeg'}
+                    alt={salesman.name || 'Sachin - B2B Sales Executive'}
+                    className="absolute inset-0 w-full h-full object-cover object-top"
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                    }}
+                  />
+                </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs sm:text-sm">

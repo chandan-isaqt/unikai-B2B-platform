@@ -12,6 +12,7 @@ export const AppConfigProvider = ({ children }) => {
     email: 'sachin.sales@unikai.local',
     region: 'Muscat, Sultanate of Oman',
     workingHours: 'Sun - Thu: 7:30 AM - 6:30 PM',
+    photoUrl: '/image/Sachin.jpeg',
     isActive: true,
   });
 
@@ -51,7 +52,10 @@ export const AppConfigProvider = ({ children }) => {
           api.get('/settings'),
         ]);
         if (salesmanRes.data?.salesman) {
-          setSalesman(salesmanRes.data.salesman);
+          setSalesman({
+            ...salesmanRes.data.salesman,
+            photoUrl: salesmanRes.data.salesman.photoUrl || '/image/Sachin.jpeg',
+          });
         }
         if (settingsRes.data?.settings) {
           setSettings(settingsRes.data.settings);

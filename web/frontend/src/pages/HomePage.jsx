@@ -562,16 +562,24 @@ const HomePage = () => {
           </div>
 
           <div className="lg:col-span-5 bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-5 space-y-4">
-            <div className="flex items-center justify-between">
-              <div>
+            <div className="flex items-center justify-between gap-4">
+              <div className="min-w-0">
                 <p className="text-xs uppercase tracking-wider text-amber-300 font-bold">
                   Assigned Salesman
                 </p>
-                <h3 className="text-lg font-extrabold text-white">{salesman.name}</h3>
-                <p className="text-xs text-slate-300">{salesman.title}</p>
+                <h3 className="text-lg font-extrabold text-white truncate">{salesman.name}</h3>
+                <p className="text-xs text-slate-300 line-clamp-1">{salesman.title}</p>
               </div>
-              <div className="w-12 h-12 rounded-2xl bg-amber-400 text-slate-950 font-extrabold text-xl flex items-center justify-center">
-                {salesman.name?.[0] || 'S'}
+              <div className="w-14 h-14 rounded-2xl overflow-hidden bg-amber-400 text-slate-950 font-extrabold text-xl flex items-center justify-center shrink-0 border-2 border-amber-300/40 shadow-sm relative">
+                <span className="select-none">{salesman.name?.[0] || 'S'}</span>
+                <img
+                  src={salesman.photoUrl || '/image/Sachin.jpeg'}
+                  alt={salesman.name || 'Sachin - B2B Sales Executive'}
+                  className="absolute inset-0 w-full h-full object-cover object-top"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
               </div>
             </div>
 
